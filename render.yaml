@@ -1,9 +1,9 @@
 services:
   - type: web
     name: blog-horizon2
-    env: java
     plan: free
-    buildCommand: "./mvnw clean package" # or "mvn clean package" if you don't use wrapper
-    startCommand: "java -jar target/*.jar"
     branch: main
+    buildCommand: "mvn clean package"
+    startCommand: "java -jar target/*.jar"
     healthCheckPath: /
+
