@@ -1,9 +1,7 @@
 services:
   - type: web
     name: blog-horizon2
-    runtime: docker
     plan: free
     branch: main
     dockerfilePath: Dockerfile
     healthCheckPath: /
-
