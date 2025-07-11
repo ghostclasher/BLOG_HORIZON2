@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <head th:replace="/fragments/head :: head">
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+    <header th:replace="/fragments/header :: header">
+  </div>
+  <!--FORM - CONTAINER-->
+   <!-- LOGIN SECTION -->
+   <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+     SAMPLE PAGE
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form >
+            
+              <div>
+                <input type="text" name="username" id="username" class="form-control"   placeholder="Your UserName" />
+              </div>
+             
+               
+
+              <div>
+                <input type="text" name="password" id="password" class="form-control"  placeholder="Your Password" />
+              </div>
+              
+              <div class="btn_box">
+                <button type="submit">
+                 Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="map_container ">
+            <div id="googleMap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+
+
+  <footer th:replace="/fragments/footer :: footer">
+</body>
+
+</html>

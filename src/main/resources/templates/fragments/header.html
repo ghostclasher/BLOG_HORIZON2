@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring Boot Security Example</title>
+</head>
+<body>
+  <!-- Header section starts -->
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" th:href="@{/home}">
+          <span>Spring Boot</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <!-- Display Home link to everyone -->
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/home}">Home</a>
+            </li>
+
+            <!-- Show Register and Login links only if the user is not authenticated -->
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
+              <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+
+            <li class="nav-item" sec:authorize="isAnonymous()">
+              <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+
+            <!-- Show Profile link only if the user is authenticated -->
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+              <a class="nav-link" th:href="@{/profile}">Profile</a>
+            </li>
+
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+              <a class="nav-link" th:href="@{/posts/add_post}">AddPost</a>
+            </li>
+
+            <!-- Optionally, show logout link if the user is authenticated -->
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+
+            <!-- Admin Panel link -->
+            <li class="nav-item" sec:authorize="hasAuthority('ACCESS_ADMIN_PANEL')">
+              <a class="nav-link" th:href="@{/admin}">ADMIN</a>
+            </li>
+
+            <!-- Editor page -->
+            <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
+              <a class="nav-link" th:href="@{/editor}">EDITOR</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- End Header section -->
+</body>
+</html>
