@@ -1,9 +1,9 @@
 services:
   - type: web
     name: blog-horizon2
+    runtime: docker
     plan: free
     branch: main
-    buildCommand: "mvn clean package"
-    startCommand: "java -jar target/*.jar"
+    dockerfilePath: Dockerfile
     healthCheckPath: /
 
